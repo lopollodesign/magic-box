@@ -1,0 +1,51 @@
+// ====================================== ·
+// OBJECTS - MEDIA
+// ====================================== ·
+
+.o-media {
+  @include t-clearfix;
+  display: block;
+
+  // BASIC ELEMENTS
+  @include t-bem-element( img ) {
+    float: left;
+    margin-right: map-get($o-map-space, medium );
+    > img {
+      display: block;
+    }
+  }
+  @include t-bem-element( body ) {
+    overflow: hidden;
+    display: block;
+    &,
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // MODIFIERS
+  @include t-bem-modifier( reverse ) {
+    > .o-media__img {
+      float: right;
+      margin-right: 0;
+      margin-left: map-get( $o-map-space , medium );
+    }
+  }
+
+  // GUTTER'S
+  @each $space-name, $space-value in $o-map-space {
+    @if ($space-name != medium ) {
+      @include t-bem-modifier( gutter-#{$space-name} ) {
+        > .o-media__img {
+          margin-right: $space-value;
+        }
+        &.o-media--reverse {
+          > .o-media__img {
+            margin-right: 0;
+            margin-left:  $space-value;
+          }
+        }
+      }
+    }
+  }
+}

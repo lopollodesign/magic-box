@@ -1,0 +1,35 @@
+// ================================ ·
+// ELEMENTS - INDEX
+// ================================ ·
+
+body {
+    font: $s-body-font-size/$s-body-line-height $s-body-font-family;
+    background-color: $s-body-bg-color;
+    color: $s-body-font-color;
+}
+
+a {
+    @include t-all-states{
+        color: inherit;
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+
+%h-margin-null {
+    margin-top: 0;
+}
+
+$each-index: length($s-map-font-sizes);
+@each $font-name, $font-size in $s-map-font-sizes {
+    h#{$each-index} {
+        font-size: $font-size;
+        @extend %h-margin-null;
+    }
+    $each-index: $each-index - 1;
+}

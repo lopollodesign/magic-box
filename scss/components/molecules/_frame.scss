@@ -1,0 +1,60 @@
+// =================== ·
+// MOLECULAS - FRAME
+// =================== ·
+
+$s-frame-border-width: 50px;
+
+.c-frame {
+    position: relative;
+    min-height: 100vh;
+    min-width: initial;
+
+    background-color: $s-bg-color-gray-darkest;
+
+    &.c-modal,
+    .c-modal & {
+        background-color: white;
+    }
+    
+    @include t-mq-min($s-bp-mobile){
+        padding: 0 $s-frame-border-width;
+    }
+
+    @include t-bem-element(header,footer) {
+        height: $s-frame-border-width;
+        min-height: $s-frame-border-width;
+        color: $s-font-color-brand;
+        padding: 0 $s-space-small;
+        text-transform: uppercase;
+        font-weight: bold;
+        background-color: $s-bg-color-gray-darkest;
+
+        .c-modal & {
+            background-color: white;
+        }
+
+        @include t-mq-min($s-bp-mobile) {
+            position: fixed;
+            left: 0;
+            right: 0;
+            padding: 0 $s-frame-border-width;
+        }
+
+    }
+
+    @include t-bem-element(header) {
+        top: 0;
+    }
+
+    @include t-bem-element(footer) {
+        bottom: 0;
+    }
+
+    @include t-bem-element(body) {
+        flex: 1 1 100%;
+        background-color: #fff;
+        @include t-mq-min($s-bp-mobile) {
+            padding: $s-frame-border-width 0;
+        }
+    }
+}
